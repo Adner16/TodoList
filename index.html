@@ -14,7 +14,7 @@
             <img src="img/to-do-list.png" alt="list img" class="icon">
         </div>
         <div class="input-bar">
-            <input id="input" type="text" placeholder="Add your Task">
+            <input id="input" onkeydown="enter(event)" type="text" placeholder="Add your Task">
         <button onclick="add()">Add</button>
         </div>
         <ul id="taskList">
