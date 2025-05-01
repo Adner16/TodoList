@@ -14,22 +14,46 @@ function add() {
 
     const listItem = document.createElement("li");
 
-    const checkBox = document.createElement("input");
-    checkBox.type = "checkbox";
-    checkBox.classList.add("custom-checkbox");
+    const checkBox = document.createElement("img");
+    checkBox.classList.add("checkbox");
+    checkBox.setAttribute("src", "img/square.png");
+    checkBox.setAttribute("onclick", "toggle(this)")
     
     const taskText = document.createElement("span");
     taskText.textContent = task;
 
-    const deleteBtn = document.createElement("button");
-    deleteBtn.classList.add("deleteBtn");
-    deleteBtn.textContent = "Elimina";
+    const img = document.createElement("img");
+    img.setAttribute("src", "img/clear.png");
+    img.setAttribute("role", "button");
+    img.setAttribute("onclick", "remove(this)");
+    img.classList.add("image");
 
-    const container = document.createElement("div"); 
+
+    const container = document.createElement("div");
+    container.classList.add("container");
     container.append(checkBox, taskText);
 
-    listItem.append(container, deleteBtn);
+    listItem.append(container, img);
     taskList.appendChild(listItem);
 
     input.value = "";
+}
+
+function remove(img) {
+    const listItem = img.closest('li');
+    if(listItem){
+        listItem.remove();
+    }
+}
+
+function toggle(img){
+    const task = img.nextElementSibling;
+
+    if(task.classList.contains("done")){
+        img.src = "square.png";
+        task.classList.remove("done");
+    } else {
+        img.src = "check.png";
+        task.classList.add("done");
+    }
 }
