@@ -50,10 +50,10 @@ function toggle(img){
     const task = img.nextElementSibling;
 
     if(task.classList.contains("done")){
-        img.src = "square.png";
+        img.src = "img/square.png";
         task.classList.remove("done");
     } else {
-        img.src = "check.png";
+        img.src = "img/check.png";
         task.classList.add("done");
     }
 }
