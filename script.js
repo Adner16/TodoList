@@ -20,6 +20,7 @@ function add() {
     checkBox.setAttribute("onclick", "toggle(this)")
     
     const taskText = document.createElement("span");
+    taskText.classList.add("taskText");
     taskText.textContent = task;
 
     const img = document.createElement("img");
@@ -35,6 +36,8 @@ function add() {
 
     listItem.append(container, img);
     taskList.appendChild(listItem);
+
+    setEditTask();
 
     input.value = "";
 }
@@ -56,4 +59,43 @@ function toggle(img){
         img.src = "img/check.png";
         task.classList.add("done");
     }
+}
+
+function setEditTask() {
+    const tasks = document.querySelectorAll('.taskText');
+    tasks.forEach(task => {
+        task.addEventListener('click', function() {
+            const originalText = task.textContent;
+            const input = document.createElement("input");
+            input.type ="text";
+            input.value = originalText;
+            input.classList.add('edit-input');
+
+            task.replaceWith(input);
+            input.focus();
+
+            input.addEventListener('keyup', function(e) {
+                if (e.key === 'Enter') {
+                    saveEdit(input, originalText);
+                }
+            });
+            
+            input.addEventListener('blur', function() {
+                saveEdit(input, originalText);
+            });
+        });
+    })       
+}
+
+function saveEdit(inputField, originalText) {
+    if (inputField._alreadySaved) return; // evita doppio salvataggio
+    inputField._alreadySaved = true;
+
+    const newText = inputField.value.trim();
+    const taskText = document.createElement('span');
+    taskText.textContent = newText || originalText; // Se è vuoto mantiene il testo originale
+    taskText.classList.add('taskText');
+    inputField.replaceWith(taskText);
+    
+    setEditTask(taskText);
 }
