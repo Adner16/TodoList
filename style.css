@@ -108,6 +108,7 @@ ul li {
 .container {
     display: flex;
     align-items: center;
+    word-break: break-word;
 }
 
 .image {

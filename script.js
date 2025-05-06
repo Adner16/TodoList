@@ -66,6 +66,13 @@ function setEditTask() {
     tasks.forEach(task => {
         task.addEventListener('click', function() {
             const originalText = task.textContent;
+            const elementClasses = task.classList;
+            let originalStyle;
+            if(elementClasses[1] === "done"){
+                originalStyle = elementClasses[1];
+            } else {
+                originalStyle = false;
+            }
             const input = document.createElement("input");
             input.type ="text";
             input.value = originalText;
@@ -76,25 +83,28 @@ function setEditTask() {
 
             input.addEventListener('keyup', function(e) {
                 if (e.key === 'Enter') {
-                    saveEdit(input, originalText);
+                    saveEdit(input, originalText, originalStyle);
                 }
             });
             
             input.addEventListener('blur', function() {
-                saveEdit(input, originalText);
+                saveEdit(input, originalText, originalStyle);
             });
         });
     })       
 }
 
-function saveEdit(inputField, originalText) {
+function saveEdit(inputField, text, style) {
     if (inputField._alreadySaved) return; // evita doppio salvataggio
     inputField._alreadySaved = true;
 
     const newText = inputField.value.trim();
     const taskText = document.createElement('span');
-    taskText.textContent = newText || originalText; // Se è vuoto mantiene il testo originale
+    taskText.textContent = newText || text; // Se è vuoto mantiene il testo originale
     taskText.classList.add('taskText');
+    if(style){
+        taskText.classList.add(style);
+    }
     inputField.replaceWith(taskText);
     
     setEditTask(taskText);
