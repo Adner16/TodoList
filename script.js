@@ -1,6 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-    caricaTasks();
+    loadtasks();
 });
 
     
@@ -132,10 +132,27 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('tasks', JSON.stringify(items));
     }
 
-    function caricaTasks() {
+    function loadtasks() {
         const salvati = JSON.parse(localStorage.getItem('tasks')) || [];
     
         salvati.forEach(task => {
             add(task.text, task.done);
         });
+    }
+
+    function deleteAll(){
+        document.querySelector(".popup").style.display = "flex";
+    }
+
+    function confirmDelete(){
+        localStorage.removeItem("tasks");
+        loadtasks();
+        taskList.innerHTML = "";
+        document.querySelector(".popup").style.display = "none";
+        const input = document.querySelector("#input");
+        input.value = "";
+    }
+
+    function cancel(){
+        document.querySelector(".popup").style.display = "none";
     }
