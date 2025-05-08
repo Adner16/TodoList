@@ -23,6 +23,20 @@ body {
     animation: fadeIn 1s ease-in-out;
 }
 
+@media (max-width: 1200px){
+    .box {
+        width: 80vw;
+        height: auto;
+    }
+}
+
+@media (max-width: 600px){
+    .box {
+        width: 90vw;
+        height: auto;
+    }
+}
+
 @keyframes fadeIn {
     from { opacity: 0; transform: scale(0.9); }
     to { opacity: 1; transform: scale(1); }
@@ -45,6 +59,23 @@ h1 {
     justify-content: space-between;
 }
 
+@media (max-width: 400px) {
+    .icon {
+        display: none;
+    }
+}
+
+@media (max-width: 490px){
+   .main-bar {
+    margin: 0;
+    height: 2rem;
+   }
+
+   h1 {
+    font-size: 1.5rem;
+   }
+}
+
 .bar-container {
     display: flex;
 }
@@ -57,7 +88,8 @@ h1 {
     background-color: #CD383A;
     cursor: pointer;
     color: white    ;
-    transition: transform 0.2s ease;;
+    transition: transform 0.2s ease;
+    white-space: nowrap;
 }
 
 .deleteAllBtn:hover {
@@ -103,6 +135,24 @@ h1 {
 
 #mainBtn:hover {
     transform: scale(1.08);
+}
+
+@media (max-width: 490px){
+    .input-bar {
+        height: 2rem;
+    }
+    #mainBtn {
+        font-size: 1rem;
+    }
+    input::placeholder {
+        font-size: 1rem;
+      }
+}
+
+@media (max-width: 360px){
+    input::placeholder {
+        color: transparent;
+    }
 }
 
 ul {
@@ -247,10 +297,4 @@ h3 {
 
 .popupBtn:hover {
     transform: scale(1.08);
-}
-
-#deleteBtn {
-    border: none;
-    background-color: #ff643b;
-    color: white;
 }
