@@ -149,7 +149,6 @@ document.addEventListener('DOMContentLoaded', () => {
         loadtasks();
         taskList.innerHTML = "";
         document.querySelector(".popup").style.display = "none";
-        const input = document.querySelector("#input");
         input.value = "";
     }
 
