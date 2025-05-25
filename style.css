@@ -15,7 +15,7 @@ body {
 
 @media (max-width: 600px){
     body{
-        padding: 5vh;
+        padding: 3vh;
     }
 }
 
@@ -168,8 +168,6 @@ ul {
     font-family: sans-serif;
     font-weight: 500;
     margin-top: 1rem;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
     background-color: #f9f9f9;
     list-style-type: none;
     border-radius: 10px;
