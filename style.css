@@ -13,6 +13,12 @@ body {
     background: linear-gradient(to bottom right, #1e357b, #39114d);
 }
 
+@media (max-width: 600px){
+    body{
+        padding: 5vh;
+    }
+}
+
 .box {
     padding: 10vh;
     width: 50vw;
@@ -33,6 +39,7 @@ body {
 @media (max-width: 600px){
     .box {
         width: 95vw;
+        padding: 3vh;
         height: auto;
     }
 }
